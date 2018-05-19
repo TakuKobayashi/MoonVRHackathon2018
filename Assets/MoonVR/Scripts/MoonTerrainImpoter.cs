@@ -16,9 +16,7 @@ public class MoonTerrainImpoter : MonoBehaviour
     public UnityEngine.Object moonImgFile;
     public UnityEngine.Object moonLblFile;
 
-
 #if UNITY_EDITOR
-
     public void SmoothTerrain()
     {
         Terrain terrain = GetComponent<Terrain>();
