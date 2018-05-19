@@ -13,11 +13,16 @@
 // limitations under the License.
 
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 /// Standard implementation for a mathematical model to make the virtual controller approximate the
 /// physical location of the Daydream controller.
 public class GvrArmModel : GvrBaseArmModel{
+  // fukuda test 
+  [SerializeField] public Text _debugText;
+  protected int swingFlag = 0;//0:アイドル、1:トップ、2:ボトム ※2になって一定時間たったら0にする
+  protected float maxSwing = 0.0f;
   /// Position of the elbow joint relative to the head before the arm model is applied.
   public Vector3 elbowRestPosition = DEFAULT_ELBOW_REST_POSITION;
 
@@ -215,6 +220,69 @@ public class GvrArmModel : GvrBaseArmModel{
     UpdateNeckPosition();
     ApplyArmModel();
     UpdateTransparency();
+  }
+
+// fukuda
+  protected virtual void Update() {
+
+/* 
+    // 3軸角度センサーを使った場合(X軸)
+　　//
+    // メリット:振り上げた値がだいたい-7で振り下げた(クラブが一番下に来た時)がだいたい7なのでインパクトの判定がしやすい
+    // デメリット:振り上げと振り下げの値が誰でもだいたい-7と7ぐらいの為競えない
+    if(swingFlag == 2){
+      // インパクト時の処理
+
+      swingFlag = 0;
+//      _debugText.text = "ひっとー!";
+    }else{
+
+      Vector3 gyro = GvrControllerInput.Gyro;// 3軸角度
+      if(gyro.x < -7 && swingFlag == 0){
+        // 大きく振りかぶった
+        swingFlag = 1;
+//        _debugText.text = "さぁ、おおきく振りかぶった!";
+      }else if(gyro.x > 7 && swingFlag == 1){
+        //振り下ろした(インパクトの瞬間、だいたいの値)
+        swingFlag = 2;
+      }
+//      _debugText.text = "x:" + gyro.x + "\ny:" + gyro.y + "\nz:" + gyro.z;
+
+    }
+*/
+
+/* 
+    // 3軸加速度を使った場合(Y軸)
+    // 
+    // メリット:スイング値の最大値を保存して、その値を使って速度を競うのに利用できる
+    // デメリット:インパクトの判定が難しいいのと、ちょっとした動作で利用したい閾値を越すので使うのが難しい
+    if(swingFlag == 2){
+      // インパクト時の処理
+
+      swingFlag = 0;
+      maxSwing = 0;
+      _debugText.text = "ひっとー!";
+    }else{
+
+      Vector3 accel = GvrControllerInput.Accel;// 3軸加速度
+      if(accel.y < -3 && swingFlag == 0){
+        // 大きく振りかぶった
+        swingFlag = 1;
+        _debugText.text = "さぁ、おおきく振りかぶった!";
+      }else if(accel.y > 10 && swingFlag == 1){
+        _debugText.text = "x:" + accel.x + "\ny:" + accel.y + "\nz:" + accel.z;
+      //振り下ろした(インパクトの瞬間、だいたいの値)
+        if(accel.y > maxSwing){
+          // スイング値の最大値を保存して、その値を使って速度を競うのに利用できる
+          maxSwing = accel.y;
+        }else{
+          // 加速値が前回より少なくなったので振り終わったと仮定する
+          swingFlag = 2;
+        }
+      }
+//      _debugText.text = "x:" + accel.x + "\ny:" + accel.y + "\nz:" + accel.z;
+    }
+*/
   }
 
   protected virtual void UpdateHandedness() {
