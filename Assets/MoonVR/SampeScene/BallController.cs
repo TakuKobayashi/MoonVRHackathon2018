@@ -5,9 +5,9 @@ using UnityEngine;
 public class BallController : MonoBehaviour
 {
 
-    public float speed = 1000; // 動く速さ
+    public float speed = 1000;
 
-    private Rigidbody rb; // Rididbody
+    private Rigidbody rb;
 
     void Start()
     {
