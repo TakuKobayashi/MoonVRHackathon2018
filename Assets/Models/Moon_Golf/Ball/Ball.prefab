@@ -22,6 +22,9 @@ GameObject:
   - component: {fileID: 33804717148700852}
   - component: {fileID: 23858331116528696}
   - component: {fileID: 95106900260949462}
+  - component: {fileID: 114792225762393730}
+  - component: {fileID: 54998676299215564}
+  - component: {fileID: 136544511282503910}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -36,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1030483369463798}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: -0.2, z: 0.6366}
   m_LocalScale: {x: 1.1857928, y: 1.1857928, z: 1.1857928}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,6 +86,21 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1030483369463798}
   m_Mesh: {fileID: 4300000, guid: 89a3da86d3b324f03be2f91d87a8caf5, type: 3}
+--- !u!54 &54998676299215564
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1030483369463798}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!95 &95106900260949462
 Animator:
   serializedVersion: 3
@@ -100,3 +118,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114792225762393730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1030483369463798}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 476a4ef193ddec84e93f92b4d28e9410, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!136 &136544511282503910
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1030483369463798}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.018117158
+  m_Height: 0.036234315
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
