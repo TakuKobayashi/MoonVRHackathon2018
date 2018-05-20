@@ -7,8 +7,10 @@ public class BallController : MonoBehaviour
 
     private float speed = 1000f;
     private bool isShoot = false;
+    private bool isCollapse = false;
 
     private Rigidbody rb;
+    [SerializeField] FracturedObject mountain;
 
     void Start()
     {
@@ -17,6 +19,12 @@ public class BallController : MonoBehaviour
 
     void Update()
     {
+        if(this.transform.localPosition.z >= 50f){
+            if(!isCollapse){
+                mountain.CollapseChunks();
+                isCollapse = true;
+            }
+        }
     }
 
     public void Shoot(){

@@ -239,11 +239,11 @@ public class GvrArmModel : GvrBaseArmModel{
     }else{
 
       Vector3 gyro = GvrControllerInput.Gyro;// 3軸角度
-      if(gyro.x < -7 && swingFlag == 0){
+      if(gyro.x < -5 && swingFlag == 0){
         // 大きく振りかぶった
         swingFlag = 1;
 //        _debugText.text = "さぁ、おおきく振りかぶった!";
-      }else if(gyro.x > 7 && swingFlag == 1){
+      }else if(gyro.x > 5 && swingFlag == 1){
         //振り下ろした(インパクトの瞬間、だいたいの値)
         swingFlag = 2;
         ballController.Shoot();
