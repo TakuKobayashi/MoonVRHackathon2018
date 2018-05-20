@@ -21,6 +21,7 @@ using System.Collections;
 public class GvrArmModel : GvrBaseArmModel{
   // fukuda test 
   [SerializeField] public Text _debugText;
+  [SerializeField] private BallController ballController;
   protected int swingFlag = 0;//0:アイドル、1:トップ、2:ボトム ※2になって一定時間たったら0にする
   protected float maxSwing = 0.0f;
   /// Position of the elbow joint relative to the head before the arm model is applied.
@@ -245,6 +246,7 @@ public class GvrArmModel : GvrBaseArmModel{
       }else if(gyro.x > 7 && swingFlag == 1){
         //振り下ろした(インパクトの瞬間、だいたいの値)
         swingFlag = 2;
+        ballController.Shoot();
       }
 //      _debugText.text = "x:" + gyro.x + "\ny:" + gyro.y + "\nz:" + gyro.z;
 
