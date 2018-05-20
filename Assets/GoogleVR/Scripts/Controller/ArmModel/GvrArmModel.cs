@@ -225,9 +225,9 @@ public class GvrArmModel : GvrBaseArmModel{
 // fukuda
   protected virtual void Update() {
 
-/* 
+
     // 3軸角度センサーを使った場合(X軸)
-　　//
+    //
     // メリット:振り上げた値がだいたい-7で振り下げた(クラブが一番下に来た時)がだいたい7なのでインパクトの判定がしやすい
     // デメリット:振り上げと振り下げの値が誰でもだいたい-7と7ぐらいの為競えない
     if(swingFlag == 2){
@@ -249,7 +249,7 @@ public class GvrArmModel : GvrBaseArmModel{
 //      _debugText.text = "x:" + gyro.x + "\ny:" + gyro.y + "\nz:" + gyro.z;
 
     }
-*/
+
 
 /* 
     // 3軸加速度を使った場合(Y軸)
